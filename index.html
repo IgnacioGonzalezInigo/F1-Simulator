@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Simulator</title>
+    <!-- JS -->
+    <script defer src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>FORMULA 1 SIMULATOR</h1>
+    </header>
+    <main>
+        <section id="ranking-pilotos">
+            <button class = "btn" id="btn-ranking">RANKING PILOTOS</button>
+            <div id="div-ranking">
+
+            </div>
+        </section>
+
+        <section id="simular-carrera">
+            <button class = "btn" id="btn-simular">SIMULAR CARRERA</button>
+            <div id="div-carrera">
+                
+            </div>
+        </section>
+
+        <section id="vuelta-rapida">
+            <button class = "btn" id="btn-cargar-vuelta">CARGAR VUELTA</button>
+
+            <div class="linea">
+                <label for="tiempo">Tiempo (en segundos) :</label>
+                <input type="number" id="tiempo">
+
+                <label for="circuito">Circuito: </label>
+                <select id="circuito" required>
+                    <option value="">Seleccione</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Silverstone">Silverstone</option>
+                </select>
+
+                <label for="piloto">Piloto:</label>
+                <select id="piloto" required>
+                    <option value="">Seleccione</option>
+                    <option value="Verstappen">Verstappen</option>
+                    <option value="Hamilton">Hamilton</option>
+                    <option value="Leclerc">Leclerc</option>
+                    <option value="Colapinto">Colapinto</option>
+                    <option value="Norris">Norris</option>
+                </select>
+
+                <label for="neumatico" required>Neumaticos: </label>
+                <select id="neumatico">
+                    <option value="">Seleccione</option>
+                    <option value="Blando">Blando</option>
+                    <option value="Medios">Medios</option>
+                    <option value="Duros">Duros</option>
+                    <option value=""></option>
+                </select>
+            </div>
+            
+            <div id="div-cargar-vuelta">
+
+            </div>
+        </section>
+        
+        <!-- Vueltas de : PILOTO -->
+        <section id="ver-vueltas-de">
+            <button class = "btn" id="btn-ver-vueltas-de">VER VUELTAS</button>
+
+            <select class ="linea" id="vueltas-de-piloto">
+                <option value="">Seleccione Piloto</option>
+                <option value="Verstappen">Verstappen</option>
+                <option value="Hamilton">Hamilton</option>
+                <option value="Leclerc">Leclerc</option>
+                <option value="Colapinto">Colapinto</option>
+                <option value="Norris">Norris</option>
+            </select>
+
+            <div id="div-vueltas-de"></div>
+        </section>
+
+        <!-- Vuelta rapida de : CIRCUITO -->
+        <section id = "ver-vuelta-rapida-de">
+            <button class = "btn" id="btn-ver-vuelta-rapida">VER VUELTA RAPIDA</button>
+            <select id="vuelta-rapida-de">
+                <option value="">Seleccione Circuito</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Canada">Canada</option>
+                <option value="Silverstone">Silverstone</option>
+            </select>
+            <div id="div-vuelta-rapida"></div>
+        </section>
+
+        <section id="resetear-simulador">
+            <button class = "btn" id="btn-reset">RESET</button>
+        </section>
+    </main>
+</body>
+</html>

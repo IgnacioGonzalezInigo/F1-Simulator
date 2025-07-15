@@ -7,10 +7,20 @@ let pilotos = [
 ]
 
 const puntaje = [25,15,10]
-const vueltasCargadas = []
+let vueltasCargadas = []
 
+let almacenadoPilotos = localStorage.getItem("pilotos")
+if (almacenadoPilotos !== null){
+    pilotos = JSON.parse(almacenadoPilotos)
+} 
+
+let almacenadoVueltas = localStorage.getItem("vueltas")
+if (almacenadoVueltas !== null){
+    vueltasCargadas = JSON.parse(almacenadoVueltas)
+}
 
 function mostrarRanking (){
+    // ACLARACION! Ver link google docs en entrega
     pilotos.sort((a,b) => b.puntos - a.puntos)
     divRanking.innerHTML = `<ul>`
     pilotos.forEach(piloto => {
@@ -20,8 +30,7 @@ function mostrarRanking (){
 }
 
 function simularCarrera(){
-    // ACLARACION!! La logica para ordenar de manera aleatoria la saque de videos de youtube .
-    // ordeno la lista de manera aleatoria y asigno puntajes en el orden que quedaron, recorriendo la lista con el mismo index que el array puntaje.
+    // ACLARACION! Ver link google docs en entrega
     pilotos.sort(() => Math.random() - 0.5)
     for (i = 0 ; i < 3; i++){
         pilotos[i].puntos += puntaje[i]
@@ -86,6 +95,7 @@ function verVueltasDe (){
 }
 
 function verVueltaRapida (){
+    divVueltaRapida.innerHTML = ""
     let circuito = document.getElementById('vuelta-rapida-de').value
     let vueltasDelCircuito = vueltasCargadas.filter(function(vuelta){
         return vuelta.circuito === circuito
@@ -99,7 +109,8 @@ function verVueltaRapida (){
         else {
             let vueltaRapida = vueltasDelCircuito[0]
             for (const vuelta of vueltasDelCircuito) {
-                if (vueltaRapida > vuelta.tiempo){
+                if (vueltaRapida.tiempo > vuelta.tiempo){
+                    console.log (vueltaRapida)
                     vueltaRapida = vuelta
                 }
             }

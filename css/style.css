@@ -107,4 +107,7 @@ header h1 {
     font-size: 20px;
 }
 
-
+.circular-image {
+    border-radius: 50%;
+    object-fit: cover;
+}

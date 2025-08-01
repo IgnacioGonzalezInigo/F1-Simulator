@@ -1,13 +1,14 @@
 let pilotos = [
-    { nombre: "Verstappen", puntos: 0 },
-    { nombre: "Norris", puntos: 0 },
-    { nombre: "Leclerc", puntos: 0 },
-    { nombre: "Hamilton", puntos: 0 },
-    { nombre: "Colapinto", puntos: 0 },
+    { nombre: "Verstappen", puntos: 0},
+    { nombre: "Norris", puntos: 0},
+    { nombre: "Leclerc", puntos: 0},
+    { nombre: "Hamilton", puntos: 0},
+    { nombre: "Colapinto", puntos: 0},
 ]
 
 const puntaje = [25,15,10]
 let vueltasCargadas = []
+
 
 let almacenadoPilotos = localStorage.getItem("pilotos")
 if (almacenadoPilotos !== null){
@@ -29,12 +30,67 @@ function mostrarRanking (){
     divRanking.innerHTML += `</ul>`
 }
 
+function alertaSimulando () {
+    Swal.fire({
+        title: "Simulando carrera...",
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        timer: 1000,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+}
+function simulandoCarrera () {
+    let timerInterval;
+    let URL = "../img/" + pilotos[0].nombre + ".png"
+    Swal.fire({
+    title: "Ganador de la carrera: " + pilotos[0].nombre,
+    html: "2do lugar : " + pilotos[1].nombre  + "<br>3er lugar : " + pilotos[2].nombre,
+    imageUrl: URL,
+    imageWidth: 150,
+    imageHeight: 150,
+    customClass: {
+        image: "circular-image"
+    },
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading();
+        const timer = Swal.getPopup().querySelector("b");
+        timerInterval = setInterval(() => {
+        timer.textContent = `${Swal.getTimerLeft()}`;
+        }, 100);
+    },
+    willClose: () => {
+        clearInterval(timerInterval);
+    }
+    }).then((result) => {
+    if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+    }
+    });
+}
+
 function simularCarrera(){
     // ACLARACION! Ver link google docs en entrega
     pilotos.sort(() => Math.random() - 0.5)
     for (i = 0 ; i < 3; i++){
         pilotos[i].puntos += puntaje[i]
     }
+    alertaSimulando()
+    
+    setTimeout(() => {
+        simulandoCarrera();
+
+        divSimular.innerHTML = `<p> ${pilotos[0].nombre} ganó la carrera! Tabla actualizada.</p>`;
+        localStorage.setItem("pilotos", JSON.stringify(pilotos));
+
+        mostrarRanking();
+    }, 1000); 
+
     divSimular.innerHTML = `<p> ${pilotos[0].nombre} gano la carrera!. Tabla actualizada</p>`
 
     let guardarPilotos = JSON.stringify (pilotos)

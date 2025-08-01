@@ -1,24 +1,35 @@
-let pilotos = [
-    { nombre: "Verstappen", puntos: 0},
-    { nombre: "Norris", puntos: 0},
-    { nombre: "Leclerc", puntos: 0},
-    { nombre: "Hamilton", puntos: 0},
-    { nombre: "Colapinto", puntos: 0},
-]
+let pilotos = []
 
 const puntaje = [25,15,10]
 let vueltasCargadas = []
 
 
-let almacenadoPilotos = localStorage.getItem("pilotos")
-if (almacenadoPilotos !== null){
-    pilotos = JSON.parse(almacenadoPilotos)
-} 
+async function cargarPilotos() {
+    try {
+        let almacenadoPilotos = localStorage.getItem("pilotos")
+        if (almacenadoPilotos !== null){
+            pilotos = JSON.parse(almacenadoPilotos)
+        }
+        else {
+            const response = await fetch ('./db/data.json')
+            const data = await response.json()
+            pilotos = data
+            localStorage.setItem("pilotos",JSON.stringify(pilotos))
+        }
+    }
+    catch (error){
+        console.log ("Error al cargar pilotos",error)
+    }
+}
+
+cargarPilotos ()
 
 let almacenadoVueltas = localStorage.getItem("vueltas")
 if (almacenadoVueltas !== null){
     vueltasCargadas = JSON.parse(almacenadoVueltas)
 }
+
+
 
 function mostrarRanking (){
     // ACLARACION! Ver link google docs en entrega

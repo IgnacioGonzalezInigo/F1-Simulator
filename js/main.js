@@ -5,6 +5,7 @@ let vueltasCargadas = []
 
 
 async function cargarPilotos() {
+    // ACLARACION (Ver docs de la entrega)
     try {
         let almacenadoPilotos = localStorage.getItem("pilotos")
         if (almacenadoPilotos !== null){
@@ -32,7 +33,6 @@ if (almacenadoVueltas !== null){
 
 
 function mostrarRanking (){
-    // ACLARACION! Ver link google docs en entrega
     pilotos.sort((a,b) => b.puntos - a.puntos)
     divRanking.innerHTML = `<ul>`
     pilotos.forEach(piloto => {
@@ -85,7 +85,6 @@ function simulandoCarrera () {
 }
 
 function simularCarrera(){
-    // ACLARACION! Ver link google docs en entrega
     pilotos.sort(() => Math.random() - 0.5)
     for (i = 0 ; i < 3; i++){
         pilotos[i].puntos += puntaje[i]

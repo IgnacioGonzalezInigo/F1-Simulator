@@ -59,7 +59,6 @@ function simulandoCarrera () {
     let URL = "../img/" + pilotos[0].nombre + ".png"
     Swal.fire({
     title: "Ganador de la carrera: " + pilotos[0].nombre,
-    html: "2do lugar : " + pilotos[1].nombre  + "<br>3er lugar : " + pilotos[2].nombre,
     imageUrl: URL,
     imageWidth: 150,
     imageHeight: 150,
@@ -96,8 +95,7 @@ function simularCarrera(){
     setTimeout(() => {
         simulandoCarrera();
 
-        divSimular.innerHTML = `<p> ${pilotos[0].nombre} ganó la carrera! Tabla actualizada.</p>`;
-        localStorage.setItem("pilotos", JSON.stringify(pilotos));
+        divSimular.innerHTML = `<button class = "btn btn-detalles" > <a href = "./html/detallesCarrera.html" > DETALLES </a> </button> `;
 
         mostrarRanking();
     }, 1000); 
@@ -106,7 +104,7 @@ function simularCarrera(){
 
     let guardarPilotos = JSON.stringify (pilotos)
     localStorage.setItem ("pilotos", guardarPilotos)
-
+    
     mostrarRanking()
 }
 

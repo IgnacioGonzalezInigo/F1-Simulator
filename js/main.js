@@ -114,7 +114,7 @@ function cargarVuelta() {
     let piloto = document.getElementById("piloto").value
     let neumatico = document.getElementById("neumatico").value
 
-    if (tiempo !== "" && circuito !== "" && piloto !== "" && neumatico !== "" && tiempo >= 50) {
+    if (tiempo && circuito && piloto && neumatico && tiempo >= 50){
         let vuelta = {
         piloto,
         circuito,
@@ -141,7 +141,7 @@ function verVueltasDe (){
         return vuelta.piloto === piloto
     })
 
-    if (piloto !== ""){
+    if (piloto){
         divVerVueltasDe.innerHTML = `<h2>VUELTAS DE ${piloto} </h2>`
         if (vueltasDe.length === 0){
             divVerVueltasDe.innerHTML += `<p>No se encontraron vueltas registradas</p>`
@@ -166,7 +166,7 @@ function verVueltaRapida (){
         return vuelta.circuito === circuito
     })
 
-    if (circuito !== ""){
+    if (circuito){
         divVueltaRapida.innerHTML += `<h2> VUELTA RAPIDA EN ${circuito} </h2>`
         if (vueltasDelCircuito.length === 0){
             divVueltaRapida.innerHTML += `<p> Aun no hay vueltas cargadas en ${circuito} </p>`

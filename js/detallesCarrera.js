@@ -14,6 +14,12 @@ function cargarPodio (){
         divPosicion.innerHTML += `<img src = "${urlPiloto}" class = "img-div"></img>`
         divPosicion.innerHTML += `<h4> ${piloto.nombre} </h4>`
         
+        if (i === 1){ puntos = 25} 
+        else if (i === 2){ puntos = 15}
+        else if (i === 3) { puntos = 10}
+
+        divPosicion.innerHTML += `<p> + ${puntos} </p>`
+        
         i++
 
         document.getElementById("detalles-carrera").appendChild(divPosicion)

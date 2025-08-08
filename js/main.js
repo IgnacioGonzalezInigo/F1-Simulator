@@ -209,6 +209,21 @@ let divVueltaRapida = document.getElementById('div-vuelta-rapida')
 
 let botonReset = document.getElementById('btn-reset')
 botonReset.addEventListener("click", () => {
+    Swal.fire({
+    title: "Seguro que queres resetear el juego?",
+    text: "Una vez seleccionada no hay vuelta atras",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, reiniciar!"
+    }).then((result) => {
+    if (result.isConfirmed) {
+    Swal.fire({
+        title: "Juego reiniciado!",
+        text: "El juego fue reseteado",
+        icon: "success"
+    });
     localStorage.clear()
 
     pilotos.forEach(piloto => piloto.puntos = 0)
@@ -222,4 +237,7 @@ botonReset.addEventListener("click", () => {
     divVuelta.innerHTML = ""
     divVerVueltasDe.innerHTML = ""
     divVueltaRapida.innerHTML = ""
+    }
+    });
 } )
+

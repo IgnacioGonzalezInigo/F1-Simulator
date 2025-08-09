@@ -173,9 +173,8 @@ function verVueltaRapida (){
         else {
             let vueltaRapida = vueltasDelCircuito[0]
             for (const vuelta of vueltasDelCircuito) {
-                if (vueltaRapida.tiempo > vuelta.tiempo){
-                    console.log (vueltaRapida)
-                    vueltaRapida = vuelta
+                if (parseFloat(vuelta.tiempo) < parseFloat(vueltaRapida.tiempo)){
+                    vueltaRapida = vuelta;
                 }
             }
             divVueltaRapida.innerHTML += `<p>Piloto: ${vueltaRapida.piloto}</p><p>Tiempo: ${vueltaRapida.tiempo} seg</p><p>Neumatico: ${vueltaRapida.neumatico}</p></div>`
